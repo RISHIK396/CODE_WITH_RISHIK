@@ -1,36 +1,29 @@
 #include<iostream>
 using namespace std;
 class complex{
-    int a,b;
+    int a;
+    int b;
+    friend complex sumcomplex(complex,complex);
     public:
-    complex set_number(int n1,int n2){
-        a=n1;
-        b=n2;
-    }
+        void setnumber(int x,int y){
+            a=x;
+            b=y;
+        }
+        void getnumber(){
+            cout<<"the complex number is: "<<a<<"+"<<b<<"i"<<endl;
 
-    // this is a function prototype it is not a part of the class 
-    // with the help of friend keyword we will allow this function to acess the private members of the class 
-    // can be declared inside public or private section of the class 
-    friend complex sum_complex(complex,complex);
-    void getdata(void);
+        }
+
 };
-void complex::getdata(void){
-    cout<<"the number is "<<a<<" + "<<b<<"i"<<endl;
+complex sumcomplex(complex o1,complex o2){
+    cout<<(o1.a+o2.a)<<"+"<<(o1.b+o2.b)<<"i "<<endl<<" is the sum of the two complex numbers "<<endl;
 }
-complex sum_complex(complex o1,complex o2){
-    complex o3;
-    o3.set_number((o1.a+o2.a),(o1.b+o2.b));
-    cout<<"the function ran sucessfully"<<endl;
-    return o3;
-}
-
 int main(){
-    complex o1,o2,sum;
-    o1.set_number(3,5);
-    o1.getdata();
-    o2.set_number(6,7);
-    o2.getdata();
-    sum=sum_complex(o1,o2);
-    sum.getdata();
-    return 0;
+    complex n1,n2,sum1;
+    n1.setnumber(2,4);
+    n1.getnumber();
+    n2.setnumber(3,6);
+    // complex sum1;
+    sum1=sumcomplex(n1,n2);
+    
 }
